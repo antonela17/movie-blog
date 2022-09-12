@@ -104,53 +104,52 @@
             <div class="row gy-4 posts-list">
 
 
-                @foreach($movies as $movie)
-                <div class="col-xl-4 col-md-6">
-                    <div class="post-item position-relative h-100">
+                @foreach($categories as $category)
+                    <div class="col-xl-4 col-md-6">
+                        <div class="post-item position-relative h-100">
 
-                        <div class="post-img position-relative overflow-hidden">
-                            <img src={{$movie['image']}}  alt="" width="600" height="300">
-                        </div>
-
-                        <div class="post-content d-flex flex-column">
-
-                            <h3 class="post-title">{{$movie['title']}}</h3>
-
-                            <div class="meta d-flex align-items-center">
-                                <div class="d-flex align-items-center">
-                                    <i class="bi bi-folder2"></i> <span class="ps-2">{{$movie['category']}}</span>
-                                </div>
+                            <div class="post-img position-relative overflow-hidden">
+                                <img src={{$category['image']}}  alt="" width="600" height="300">
                             </div>
 
-                            <p>
-                                Incidunt voluptate sit temporibus aperiam. Quia vitae aut sint ullam quis illum voluptatum et. Quo libero rerum voluptatem pariatur nam.
-                            </p>
-                            <a href={{$movie['slug']}} class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                            <div class="post-content d-flex flex-column">
+
+                                <h3 class="post-title">{{$category['title']}}</h3>
+
+                                <div class="meta d-flex align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-folder2"></i> <span class="ps-2">{{$category['category']}}</span>
+                                    </div>
+                                </div>
+
+                                <p>
+                                    Incidunt voluptate sit temporibus aperiam. Quia vitae aut sint ullam quis illum voluptatum et. Quo libero rerum voluptatem pariatur nam.
+                                </p>
+                                <a href={{$category['slug']}} class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+
+                            </div>
 
                         </div>
-
-                    </div>
-                </div><!-- End post list item -->
+                    </div><!-- End post list item -->
                 @endforeach
 
-                {!! $movies->links() !!}
+                {!! $categories->links() !!}
 
             </div><!-- End blog posts list -->
 
 
-{{--            <div class="blog-pagination">--}}
-{{--                <ul class="justify-content-center">--}}
-{{--                    <li><a href="#">1</a></li>--}}
-{{--                    <li class="active"><a href="#">2</a></li>--}}
-{{--                    <li><a href="#">3</a></li>--}}
-{{--                </ul>--}}
-{{--            </div><!-- End blog pagination -->--}}
+            {{--            <div class="blog-pagination">--}}
+            {{--                <ul class="justify-content-center">--}}
+            {{--                    <li><a href="#">1</a></li>--}}
+            {{--                    <li class="active"><a href="#">2</a></li>--}}
+            {{--                    <li><a href="#">3</a></li>--}}
+            {{--                </ul>--}}
+            {{--            </div><!-- End blog pagination -->--}}
 
         </div>
     </section><!-- End Blog Section -->
 
 </main><!-- End #main -->
-
 <!-- ======= Footer ======= -->
 <footer id="footer" class="footer">
 

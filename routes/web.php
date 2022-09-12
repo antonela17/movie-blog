@@ -22,9 +22,9 @@ Route::get('/', function () {
 Route::get('/contact', [\App\Http\Controllers\ContactController::class,'create']);
 Route::post('/contact',[\App\Http\Controllers\ContactController::class, 'send'])->name('contact.send');
 
-Route::get('/blog', function () {
-    return view('blog');
-});
+//Route::get('/blog', function () {
+//    return view('blog');
+//});
 
 Route::get('/blog-details', function () {
     return view('blog-details');
@@ -59,4 +59,14 @@ Route::get('/email', function () {
     return new ContactEmail();
 });
 
+Route::get('/blog',[\App\Http\Controllers\BlogController::class,'show']);
+Route::get('/blog/{slug}', [\App\Http\Controllers\CategoryController::class,'show']);
+
+Route::get('/{slug}',[\App\Http\Controllers\BlogDetailsController::class,'show']);
+
+
+
+
 Route::get('/sendMail', [\App\Http\Controllers\MailController::class,'sendMail']);
+
+Route::get('/json',[\App\Http\Controllers\readDataFromJson::class,'readData']);
