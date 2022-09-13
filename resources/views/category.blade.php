@@ -85,10 +85,10 @@
 <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/breadcrumbs-bg.jpg');">
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url({{asset('assets/img/breadcrumbs-bg.jpg')}});">
         <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
 
-            <h2>Blog</h2>
+            <h2>{{$slug}}</h2>
             <ol>
                 <li><a href="index.html">Home</a></li>
                 <li>Blog</li>
@@ -123,9 +123,9 @@
                                 </div>
 
                                 <p>
-                                    Incidunt voluptate sit temporibus aperiam. Quia vitae aut sint ullam quis illum voluptatum et. Quo libero rerum voluptatem pariatur nam.
+                                    {{substr($category['content'],0,150).'...'}}
                                 </p>
-                                <a href={{$category['slug']}} class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                                <a href={{`blog/`.$category['slug']}} class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
 
                             </div>
 

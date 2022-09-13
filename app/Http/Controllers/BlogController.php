@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
 use App\Models\Movie;
+use Illuminate\Http\Request;
 
 class BlogController
 {
@@ -15,6 +17,7 @@ class BlogController
             'movies.title',
             'movies.image',
             'movies.slug',
+            'movies.content',
             'movies.categoryId',
             'categories.category',
             'categories.slug as category_slug'
@@ -23,6 +26,33 @@ class BlogController
             ->orderBy('movies.id')
             ->paginate(6);
 
-    return view('blog')->with(compact('movies'));
+        $categories = Categories::all()->toArray();
+
+
+        return view('blog')->with(compact('movies','categories'));
+    }
+
+    public function search(Request $request) {
+        // Get the search value from the request
+        $search = $request->input('search');
+        if ($search) {
+            // Search in the title and body columns from the posts table
+            $content = Movie::query()
+                ->where('title', 'LIKE', "%{$search}%")
+                ->get()->toArray();
+            if ($content) {
+                $content = $content[0];
+                $categories = Categories::all()->toArray();
+                $allMovies = Movie::query()->where('id','!=',$content['id'])->get()->random(5);
+
+                return view('blog-details')->with(compact('content','categories','allMovies'));
+            }
+            else return redirect()->back();
+        }
+
+        else{
+            return redirect()->back();
+        }
+
     }
 }

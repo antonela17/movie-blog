@@ -13,7 +13,6 @@ class BlogDetailsController
         if ($content) {
             $content = $content[0];
             $categories = Categories::all()->toArray();
-
             $allMovies = Movie::query()->where('id','!=',$content['id'])->get()->random(5);;
 
             return view('blog-details')->with(compact('content','categories','allMovies'));

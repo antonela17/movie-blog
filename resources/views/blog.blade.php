@@ -58,24 +58,14 @@
                 <li><a href="services.html">Services</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="blog.html">Blog</a></li>
-                <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                <li class="dropdown"><a href="#"><span>Categories</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                     <ul>
-                        <li><a href="#">Dropdown 1</a></li>
-                        <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                            <ul>
-                                <li><a href="#">Deep Dropdown 1</a></li>
-                                <li><a href="#">Deep Dropdown 2</a></li>
-                                <li><a href="#">Deep Dropdown 3</a></li>
-                                <li><a href="#">Deep Dropdown 4</a></li>
-                                <li><a href="#">Deep Dropdown 5</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Dropdown 2</a></li>
-                        <li><a href="#">Dropdown 3</a></li>
-                        <li><a href="#">Dropdown 4</a></li>
+                        @foreach($categories as $category)
+                        <li><a href={{"blog/".$category['slug']}}>{{$category['category']}}</a></li>
+                        @endforeach
                     </ul>
                 </li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact">Contact</a></li>
             </ul>
         </nav><!-- .navbar -->
 
@@ -85,10 +75,19 @@
 <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/breadcrumbs-bg.jpg');">
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url({{asset('assets/img/breadcrumbs-bg.jpg')}});">
         <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
 
             <h2>Blog</h2>
+
+            <div class="sidebar-item search-form">
+                <form action="{{ route('search') }}" method="POST" class="mt-3">
+                    @csrf
+                    <input type="text" name="search">
+                    <button type="submit"><i class="bi bi-search"></i></button>
+                </form>
+            </div><!-- End sidebar search formn-->
+
             <ol>
                 <li><a href="index.html">Home</a></li>
                 <li>Blog</li>
@@ -102,8 +101,6 @@
         <div class="container" data-aos="fade-up" data-aos-delay="100">
 
             <div class="row gy-4 posts-list">
-
-
                 @foreach($movies as $movie)
                 <div class="col-xl-4 col-md-6">
                     <div class="post-item position-relative h-100">
@@ -123,17 +120,19 @@
                             </div>
 
                             <p>
-                                Incidunt voluptate sit temporibus aperiam. Quia vitae aut sint ullam quis illum voluptatum et. Quo libero rerum voluptatem pariatur nam.
+                                {{substr($movie['content'],0,150).'...'}}
                             </p>
                             <a href={{$movie['slug']}} class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
 
                         </div>
 
                     </div>
+
                 </div><!-- End post list item -->
                 @endforeach
 
                 {!! $movies->links() !!}
+
 
             </div><!-- End blog posts list -->
 

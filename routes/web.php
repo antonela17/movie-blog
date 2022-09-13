@@ -60,6 +60,8 @@ Route::get('/email', function () {
 });
 
 Route::get('/blog',[\App\Http\Controllers\BlogController::class,'show']);
+Route::post('/blog',[\App\Http\Controllers\BlogController::class,'search'])->name('search');
+
 Route::get('/blog/{slug}', [\App\Http\Controllers\CategoryController::class,'show']);
 
 Route::get('/{slug}',[\App\Http\Controllers\BlogDetailsController::class,'show']);

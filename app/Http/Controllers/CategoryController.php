@@ -26,7 +26,7 @@ class CategoryController
                 ->orderBy('movies.id')
                 ->paginate(6);
 
-            return view('category')->with(compact('categories'));
+            return view('category')->with(compact('categories','slug'));
         }
 
         return abort(404);
