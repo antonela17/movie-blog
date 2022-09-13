@@ -31,7 +31,7 @@ class ContactController
 
         try {
             Mail::to($data['email'])->send(new ContactEmail($data));
-            return redirect('/contact')->with('success','Your message has been sent. Thank you!');
+            return redirect()->back()->with('success','Your message has been sent. Thank you!');
 
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Email sent successfully');
