@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categories;
 use App\Models\Movie;
+use Illuminate\Support\Str;
 
 class CategoryController
 {
@@ -12,7 +13,7 @@ class CategoryController
         $content = Categories::where('slug', $slug)->get()->toArray();
         if ($content) {
             $content = $content[0];
-            $categories = Movie::query()->select([
+            $movies = Movie::query()->select([
                 'movies.title',
                 'movies.image',
                 'movies.slug',
@@ -26,7 +27,10 @@ class CategoryController
                 ->orderBy('movies.id')
                 ->paginate(6);
 
-            return view('category')->with(compact('categories','slug'));
+            $categories = Categories::all()->toArray();
+            $title = Str::title($slug);
+
+            return view('category')->with(compact('movies','title', 'categories'));
         }
 
         return abort(404);

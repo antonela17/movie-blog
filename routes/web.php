@@ -59,16 +59,16 @@ Route::get('/email', function () {
     return new ContactEmail();
 });
 
-Route::get('/blog',[\App\Http\Controllers\BlogController::class,'show']);
-Route::post('/blog',[\App\Http\Controllers\BlogController::class,'search'])->name('search');
+Route::get('/movies',[\App\Http\Controllers\BlogController::class,'show']);
+Route::post('/movies',[\App\Http\Controllers\SearchController::class,'search'])->name('search');
 
-Route::get('/blog/{slug}', [\App\Http\Controllers\CategoryController::class,'show']);
+Route::get('/movies/{slug}', [\App\Http\Controllers\CategoryController::class,'show']);
 
 Route::get('/{slug}',[\App\Http\Controllers\BlogDetailsController::class,'show']);
-
-
-
 
 Route::get('/sendMail', [\App\Http\Controllers\MailController::class,'sendMail']);
 
 Route::get('/json',[\App\Http\Controllers\readDataFromJson::class,'readData']);
+
+
+

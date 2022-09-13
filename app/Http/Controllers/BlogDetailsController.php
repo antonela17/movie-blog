@@ -15,7 +15,7 @@ class BlogDetailsController
             $categories = Categories::all()->toArray();
             $allMovies = Movie::query()->where('id','!=',$content['id'])->get()->random(5);;
 
-            return view('blog-details')->with(compact('content','categories','allMovies'));
+            return view('movie-details')->with(compact('content','categories','allMovies'));
         }
 
         return abort(404);
