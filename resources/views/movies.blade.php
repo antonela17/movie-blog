@@ -52,7 +52,7 @@
                                     <p>
                                         {{substr($movie['content'],0,150).'...'}}
                                     </p>
-                                    <a href='/{{$movie['slug']}}' class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                                    <a href='/home/{{$movie['slug']}}' class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
 
                                 </div>
 

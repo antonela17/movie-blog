@@ -54,18 +54,49 @@
         <nav id="navbar" class="navbar">
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/services">Services</a></li>
-                <li><a href="/projects">Projects</a></li>
-                <li><a href="/movies">Movies</a></li>
+                <li><a href="/home/about">About</a></li>
+                <li><a href="/home/services">Services</a></li>
+                <li><a href="/home/projects">Projects</a></li>
+                <li><a href="/home/movies">Movies</a></li>
                 <li class="dropdown"><a href="#"><span>Categories</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                     <ul>
                         @foreach($categories as $category)
-                            <li><a href='/movies/{{$category['slug']}}'>{{$category['category']}}</a></li>
+                            <li><a href='/home/movies/{{$category['slug']}}'>{{$category['category']}}</a></li>
                         @endforeach
                     </ul>
                 </li>
-                <li><a href="contact">Contact</a></li>
+                <li><a href="/home/contact">Contact</a></li>
+                @guest
+                    @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                    @endif
+
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                    @endif
+                @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" style="color: black" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                @endguest
             </ul>
         </nav><!-- .navbar -->
 
@@ -73,6 +104,7 @@
 </header><!-- End Header -->
 
 @yield('content')
+
 <!-- ======= Footer ======= -->
 <footer id="footer" class="footer">
 
@@ -101,11 +133,11 @@
                 <div class="col-lg-2 col-md-3 footer-links">
                     <h4>Useful Links</h4>
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Terms of service</a></li>
-                        <li><a href="#">Privacy policy</a></li>
+                        <li><a href="/home">Home</a></li>
+                        <li><a href="/home/about">About us</a></li>
+                        <li><a href="/home/services">Services</a></li>
+                        <li><a href="/home/terms">Terms of service</a></li>
+                        <li><a href="/home/privacy">Privacy policy</a></li>
                     </ul>
                 </div><!-- End footer links column-->
 

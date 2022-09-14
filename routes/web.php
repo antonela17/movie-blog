@@ -16,16 +16,12 @@ use App\Mail\ContactEmail;
 |
 */
 
-
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-
-Route::get('/home', function () {
-    return view('index');
-});
+Route::get('/home',[\App\Http\Controllers\HomePageController::class,'show']);
 
 Route::get('/home/contact', [\App\Http\Controllers\ContactController::class,'create']);
 Route::post('/home/contact',[\App\Http\Controllers\ContactController::class, 'send'])->name('contact.send');

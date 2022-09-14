@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $categories = Categories::all()->toArray();
+
+        return redirect('/home');
+
+//        return view('index')->with(compact('categories'));
     }
 }

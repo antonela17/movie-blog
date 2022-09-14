@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ContactEmail;
+use App\Models\Categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -10,7 +11,9 @@ class ContactController
 {
     public function create()
     {
-        return view('contact');
+        $categories = Categories::all()->toArray();
+
+        return view('contact')->with(compact('categories'));
     }
 
     public function send(Request $request)
