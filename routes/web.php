@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Categories;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use \Illuminate\Support\Facades\Mail;
@@ -58,10 +59,22 @@ Route::get('/home/services', function () {
 Route::get('/home/movies',[\App\Http\Controllers\MoviesController::class,'show']);
 Route::post('/home/movies',[\App\Http\Controllers\SearchController::class,'search'])->name('search');
 
+Route::get('/home/movies/create',[\App\Http\Controllers\MoviesController::class,"showCreateMovie"])->name('movie.showCreate');
+Route::post("/home/movies/create",[\App\Http\Controllers\MoviesController::class,'createMovie'])->name('movie.create');
+
 Route::get('/home/movies/{slug}', [\App\Http\Controllers\CategoryController::class,'show']);
 
 Route::get('/home/{slug}',[\App\Http\Controllers\MovieDetailsController::class,'show']);
 Route::post('/home/delete/{id}',[\App\Http\Controllers\MoviesController::class,'destroy'])->name('movie.delete');
+
+Route::get('/home/movies/edit/{id}',[\App\Http\Controllers\MoviesController::class,"showEditPage"])->name('movie.showEdit');
+Route::post('/home/movies/edit/{id}',[\App\Http\Controllers\MoviesController::class,'edit'])->name('movie.edit');
+
+//Route::get('/home/edit', function () {
+//    $categories = Categories::all()->toArray();
+//
+//    return view('movie.edit')->with(compact("categories"));
+//})->name('edit');
 
 //Route::get('/home/sendMail', [\App\Http\Controllers\MailController::class,'sendMail']);
 

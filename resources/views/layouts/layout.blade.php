@@ -66,6 +66,11 @@
                     </ul>
                 </li>
                 <li><a href="/home/contact">Contact</a></li>
+                @if(Auth::user()->roleId==1)
+                    @if(Route::getCurrentRoute()->getActionName() == 'App\Http\Controllers\MoviesController@show')
+                        <li><a href="{{route('movie.showCreate')}}">New Movie</a> </li>
+                    @endif
+                @endif
                 @guest
                     @if (Route::has('login'))
                         <li class="nav-item">
@@ -211,6 +216,7 @@
 
 <!-- Template Main JS File -->
 <script src="{{asset('assets/js/main.js')}}"></script>
+<script src="{{asset('js/bootstrap.js')}}" ></script>
 
 </body>
 

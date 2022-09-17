@@ -28,9 +28,9 @@
         </div><!-- End Breadcrumbs -->
 
         <!-- ======= Blog Section ======= -->
+
         <section id="blog" class="blog">
             <div class="container" data-aos="fade-up" data-aos-delay="100">
-
                 <div class="row gy-4 posts-list">
                     @foreach($movies as $movie)
                         <div class="col-xl-4 col-md-6">
@@ -50,7 +50,7 @@
                                             <i class="bi bi-folder2"></i> <span
                                                 class="ps-2">{{$movie['category']}}</span>
                                             @if(Auth::user()->roleId==1)
-                                                <span class="ps-3"><a href="#">Edit</a></span>
+                                                <span class="ps-3"><a href={{route('movie.showEdit',$movie->id)}}>Edit</a></span>
                                                 <form action="{{ route('movie.delete', $movie->id) }}" method="POST">
                                                     @csrf
                                                     <span class="ps-3"> <button type="submit" class="btn btn-danger"
@@ -70,6 +70,20 @@
 
                         </div><!-- End post list item -->
                     @endforeach
+                    <div class="modal fade" id="practice_modal">
+                        <div class="modal-dialog">
+                            <form id="companydata">
+                                <div class="modal-content">
+                                    <input type="hidden" id="color_id" name="color_id" value="">
+                                    <div class="modal-body">
+                                        <input type="text" name="name" id="name" value="" class="form-control">
+                                    </div>
+                                    <input type="submit" value="Submit" id="submit"
+                                           class="btn btn-sm btn-outline-danger py-0" style="font-size: 0.8em;">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                     {!! $movies->links() !!}
                 </div>
             </div>
