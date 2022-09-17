@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categories;
 use App\Models\Movie;
 
-class BlogDetailsController
+class MovieDetailsController
 {
     public function show($slug)
     {

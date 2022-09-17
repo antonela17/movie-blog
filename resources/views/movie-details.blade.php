@@ -250,6 +250,8 @@
 
                     </div>
 
+
+
                     <div class="col-lg-4">
                         <div class="sidebar">
                             <div class="sidebar-item categories">
@@ -282,7 +284,7 @@
                                 </div>
 
                             </div><!-- End sidebar recent posts-->
-
+                            @if(Auth::user()->roleId==1)
                             <div class="sidebar-item tags">
                                 <h3 class="sidebar-title">Tags</h3>
                                 <ul class="mt-3">
@@ -304,6 +306,8 @@
 
                     </div>
                 </div>
+
+                @endif
 
             </div>
         </section><!-- End Blog Details Section -->

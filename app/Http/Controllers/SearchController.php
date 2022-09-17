@@ -14,6 +14,7 @@ class SearchController extends Controller
         $search = $request->input('search');
         if ($search) {
             $movies = Movie::query()->select([
+                'movies.id',
                 'movies.title',
                 'movies.image',
                 'movies.slug',

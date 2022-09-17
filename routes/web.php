@@ -55,12 +55,13 @@ Route::get('/home/services', function () {
 //    return new ContactEmail();
 //});
 
-Route::get('/home/movies',[\App\Http\Controllers\BlogController::class,'show']);
+Route::get('/home/movies',[\App\Http\Controllers\MoviesController::class,'show']);
 Route::post('/home/movies',[\App\Http\Controllers\SearchController::class,'search'])->name('search');
 
 Route::get('/home/movies/{slug}', [\App\Http\Controllers\CategoryController::class,'show']);
 
-Route::get('/home/{slug}',[\App\Http\Controllers\BlogDetailsController::class,'show']);
+Route::get('/home/{slug}',[\App\Http\Controllers\MovieDetailsController::class,'show']);
+Route::post('/home/delete/{id}',[\App\Http\Controllers\MoviesController::class,'destroy'])->name('movie.delete');
 
 //Route::get('/home/sendMail', [\App\Http\Controllers\MailController::class,'sendMail']);
 

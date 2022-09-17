@@ -5,7 +5,8 @@
     <main id="main">
 
         <!-- ======= Breadcrumbs ======= -->
-        <div class="breadcrumbs d-flex align-items-center" style="background-image: url({{asset('assets/img/breadcrumbs-bg.jpg')}});">
+        <div class="breadcrumbs d-flex align-items-center"
+             style="background-image: url({{asset('assets/img/breadcrumbs-bg.jpg')}});">
             <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
 
                 <h2>Movie Blog</h2>
@@ -43,31 +44,37 @@
 
                                     <h3 class="post-title">{{$movie['title']}}</h3>
 
+
                                     <div class="meta d-flex align-items-center">
                                         <div class="d-flex align-items-center">
-                                            <i class="bi bi-folder2"></i> <span class="ps-2">{{$movie['category']}}</span>
+                                            <i class="bi bi-folder2"></i> <span
+                                                class="ps-2">{{$movie['category']}}</span>
+                                            @if(Auth::user()->roleId==1)
+                                                <span class="ps-3"><a href="#">Edit</a></span>
+                                                <form action="{{ route('movie.delete', $movie->id) }}" method="POST">
+                                                    @csrf
+                                                    <span class="ps-3"> <button type="submit" class="btn btn-danger"
+                                                                                onclick="return confirm('Sure Want Delete?')">Delete</button> </span>
+                                                </form>
+                                            @endif
                                         </div>
                                     </div>
-
                                     <p>
                                         {{substr($movie['content'],0,150).'...'}}
                                     </p>
-                                    <a href='/home/{{$movie['slug']}}' class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-
+                                    <a href='/home/{{$movie['slug']}}' class=""><span>Read More</span><i
+                                            class="bi bi-arrow-right"></i></a>
                                 </div>
 
                             </div>
 
                         </div><!-- End post list item -->
                     @endforeach
-
                     {!! $movies->links() !!}
-
-
-                </div><!-- End blog posts list -->
-
+                </div>
             </div>
-        </section><!-- End Blog Section -->
-
-    </main><!-- End #main -->
+        </section>
+    </main>
 @endsection
+
+

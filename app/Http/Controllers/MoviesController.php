@@ -6,14 +6,12 @@ use App\Models\Categories;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 
-class BlogController
+class MoviesController
 {
     public function show()
     {
-//    $movies = Movie::paginate(6);
-//    $movies = $movies['data'];
-
         $movies = Movie::query()->select([
+            'movies.id',
             'movies.title',
             'movies.image',
             'movies.slug',
@@ -30,5 +28,11 @@ class BlogController
 
 
         return view('movies')->with(compact('movies','categories'));
+    }
+
+    public function destroy(Movie $movie,$id) {
+        $movie = $movie::findOrFail($id);
+        $movie->delete();
+        return redirect()->back()->with("success","Movie deleted");
     }
 }
