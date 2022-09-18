@@ -16,6 +16,8 @@ use App\Mail\ContactEmail;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/json',[\App\Http\Controllers\readDataFromJson::class,'test']);
+
 
 Auth::routes();
 
@@ -78,5 +80,4 @@ Route::post('/home/movies/edit/{id}',[\App\Http\Controllers\MoviesController::cl
 
 //Route::get('/home/sendMail', [\App\Http\Controllers\MailController::class,'sendMail']);
 
-Route::get('/json',[\App\Http\Controllers\readDataFromJson::class,'readData']);
 

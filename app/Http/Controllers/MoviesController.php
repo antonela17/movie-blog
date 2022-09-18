@@ -28,7 +28,6 @@ class MoviesController
 
         $categories = Categories::all()->toArray();
 
-
         return view('movies')->with(compact('movies','categories'));
     }
 
@@ -71,7 +70,6 @@ class MoviesController
         return redirect()->back()->with("success","Movie deleted");
     }
     public function createMovie(Request $request) {
-//        $movie = Movie::query()->where('id',$id)->firstOrFail()->toArray();
         $title = $request->title;
         $image = $request->image;
         $categoryId = $request->category;
@@ -87,9 +85,6 @@ class MoviesController
 
         $movie->save();
         return back()->with('success', 'Course Successfully Added');
-
-
-
     }
 
     public function showCreateMovie() {

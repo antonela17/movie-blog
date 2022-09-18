@@ -216,7 +216,7 @@
 
 <!-- Template Main JS File -->
 <script src="{{asset('assets/js/main.js')}}"></script>
-<script src="{{asset('js/bootstrap.js')}}" ></script>
+{{--<script src="{{asset('js/bootstrap.js')}}" ></script>--}}
 
 </body>
 
