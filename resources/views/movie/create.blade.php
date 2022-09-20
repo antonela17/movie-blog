@@ -44,7 +44,7 @@
                         </div>
 
                         <div class="col-md-12 text-center">
-                            <button type="submit" class="btn btn-primary">Edit Movie</button>
+                            <button type="submit" class="btn btn-primary">Add Movie</button>
                         </div>
 
                     </div>

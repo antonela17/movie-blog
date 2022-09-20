@@ -12,6 +12,6 @@ class Movie extends Model
 
     protected $table = 'movies';
 
-    protected $fillable = ['id','title','image','slug','categoryId','content'];
+    protected $fillable = ['id','title','image','slug','categoryId','content','video'];
 
 }
