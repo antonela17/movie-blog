@@ -42,12 +42,12 @@ class MoviesController
     public function edit(Request $request,$id) {
         $movie = Movie::query()->where('id', $id)->firstOrFail();
 
-//        $request->validate([
-//            'title' => 'string|unique:movies|max:255',
-//            'image'=>'string|max:255',
-//            'content' => 'string|max:14900',
-//            'video' => 'string|max:14900',
-//        ]);
+        $request->validate([
+            'title' => 'string|unique:movies|max:1000',
+            'image'=>'string|max:255',
+            'content' => 'string|max:14900',
+            'video' => 'string|max:14900',
+        ]);
 
         try {
             $slug = Str::slug($movie->title);
@@ -86,6 +86,7 @@ class MoviesController
 
         return redirect()->back()->with("success","Movie deleted");
     }
+
     public function createMovie(Request $request) {
         $title = $request->title;
         $image = $request->image;
@@ -93,16 +94,41 @@ class MoviesController
         $content = $request->contentText;
         $slug = Str::slug($request->title);
 
-        try {
-            $movie = new Movie();
-            $movie['title'] = $title;
-            $movie['image'] = $image;
-            $movie['slug'] = $slug;
-            $movie['categoryId'] = $categoryId;
-            $movie['content'] = $content;
+//        $request->validate([
+//            'title' => 'required|string|unique:movies|max:1000',
+//            'image'=>'required|string|max:255',
+//            'content' => 'required|string|max:14900',
+//            'video' => 'required|string',
+//            'categoryId' => 'required'
+//        ]);
+
+        if ($request->hasFile('trailer')) {
+            $request->validate([
+                'video' => 'mimes:mp4' // Only allow .mp4
+            ]);
+
+            $destination_path = 'public/movies';
+            $image_name = $request->file('trailer')->getClientOriginalName();
+            $request->file('trailer')->storeAs($destination_path, $image_name);
+
+            try {
+                $movie = new Movie();
+                $movie['title'] = $title;
+                $movie['image'] = $image;
+                $movie['slug'] = $slug;
+                $movie['categoryId'] = $categoryId;
+                $movie['content'] = $content;
+                $movie['video'] = $request->file('trailer')->getClientOriginalName();
+
 
             $movie->save();
         } catch (\Exception $e) {
+                return redirect()->back()
+                    ->with('error', 'An error occurred while processing your data. Please try again later!');
+            }
+        }
+
+        else {
             return redirect()->back()
                 ->with('error', 'An error occurred while processing your data. Please try again later!');
         }

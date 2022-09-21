@@ -59,4 +59,16 @@ class MovieDetailsController
         return back()->with('success', 'Course Successfully Added');
     }
 
+    public function deleteComment($id) {
+        $comment = Comment::findOrFail($id);
+        try {
+            $comment->delete();
+
+        }  catch (\Exception $e) {
+            return redirect()->back()
+                ->with('error', 'An error occurred while processing your data. Please try again later!');
+        }
+
+        return redirect()->back()->with("success","Comment deleted");
+    }
 }

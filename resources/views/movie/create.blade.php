@@ -16,12 +16,15 @@
     </div>
     <section id="get-started" class="get-started section-bgr">
         <div class="container">
+            @if(session()->has('error'))
+                <div class="error-message">{{ session('error') }}</div>
+            @endif
             @if(session()->has('success'))
                 <div class="sent-message">{{session('success')}}</div>
             @endif
 
             <div class="col-lg-5 d-flex align-items-center" >
-                <form action="{{route('movie.create')}}" method="POST">
+                <form action="{{route('movie.create')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <h3>Add a New Movie!</h3>
                     <div class="row gy-3">
@@ -41,6 +44,10 @@
                         <div class="col-md-12">
                             <label>Content: </label> <textarea class="form-control" name="contentText" rows="6" value=""
                                       required></textarea>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label>Trailer: </label> <input type="file" name="trailer" class="form-control" required>
                         </div>
 
                         <div class="col-md-12 text-center">

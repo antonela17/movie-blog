@@ -76,6 +76,8 @@ Route::group(['middleware' => 'user_only'], function () {
 
     Route::get('/home/{slug}', [\App\Http\Controllers\MovieDetailsController::class, 'show']);
     Route::post('/home/{id}',[\App\Http\Controllers\MovieDetailsController::class,'addComment'])->name('comment.add');
+    Route::post('/home/comment/{id}',[\App\Http\Controllers\MovieDetailsController::class,'deleteComment'])->name('comment.delete');
+
 
 });
 

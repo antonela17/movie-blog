@@ -28,17 +28,15 @@ class ProfileController extends Controller
             'email' => 'required|string|unique:users|max:255',
         ]);
 
-
-
         if ($request->hasFile('profile_picture')) {
             $request->validate([
                 'profile_picture' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
             ]);
 
             // Save the file locally in the storage/public/ folder under a new folder named /product
-            $desination_path = 'public/usersProfilePicture';
+            $destination_path = 'public/usersProfilePicture';
             $image_name = $request->file('profile_picture')->getClientOriginalName();
-            $request->file('profile_picture')->storeAs($desination_path, $image_name);
+            $request->file('profile_picture')->storeAs($destination_path, $image_name);
             try {
                 $user->update([
                     'name' => $request->name,
