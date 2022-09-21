@@ -78,11 +78,11 @@
 
                             <div id="comment-1" class="comment">
                                 <div class="d-flex">
-                                    <div class="comment-img"><img src="{{asset('assets/img/blog/comments-1.jpg')}}" alt=""></div>
+                                    <div class="comment-img"><img src="{{\Illuminate\Support\Facades\Storage::url('usersProfilePicture/'.$comment['profile_picture'])}}" alt=""></div>
                                     <div>
                                         <h5><a href="">{{$comment['name']}}  {{$comment['surname']}}</a> <a href="#" class="reply"><i
                                                     class="bi bi-reply-fill"></i> Reply</a></h5>
-                                        <time datetime="2020-01-01">01 Jan,2022</time>
+                                        <time datetime="{{$comment['date']}}">{{$comment['date']}}</time>
                                         <p>
                                             {{$comment['comment']}}
                                         </p>

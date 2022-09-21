@@ -8,6 +8,8 @@ use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
+
 
 class MovieDetailsController
 {
@@ -24,8 +26,10 @@ class MovieDetailsController
                 'comments.userId',
                 'comments.movieId',
                 'comments.comment',
+                'comments.date',
                 'users.name',
-                'users.surname'
+                'users.surname',
+                'users.profile_picture'
             ])->join('users', 'users.id', '=', 'comments.userId')->where('movieId', '=', $movieId)->get()->toArray();
 
             return view('movie-details')->with(compact('content', 'categories', 'allMovies', 'comments'));
@@ -35,12 +39,16 @@ class MovieDetailsController
 
     public function addComment(Request $request, $movieId)
     {
+        $currentTime = Carbon::now();
+        $currentTime = $currentTime->toDateTimeString();
+
         $request->validate(['comment'=>'required|string|max:1000']);
         try {
             $comment = new Comment();
             $comment['comment'] = request()->comment;
             $comment['userId'] = Auth::user()->id;
             $comment['movieId'] = $movieId;
+            $comment['date'] = $currentTime;
 
 
             $comment->save();

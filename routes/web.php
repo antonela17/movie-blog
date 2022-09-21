@@ -52,6 +52,10 @@ Route::group(['middleware' => 'user_only'], function () {
         return view('services');
     });
 
+    Route::get('/home/profile',[\App\Http\Controllers\ProfileController::class,'show'])->name('profile.show');
+    Route::post('/home/profile/edit/{id}',[\App\Http\Controllers\ProfileController::class,'edit'])->name('profile.edit');
+
+
 //Route::get('/home/email', function () {
 //  Mail::to('info@gmail.com')->send(new ContactEmail());
 //    return new ContactEmail();

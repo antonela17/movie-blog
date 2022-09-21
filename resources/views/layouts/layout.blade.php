@@ -16,7 +16,9 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="{{asset('assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -58,7 +60,8 @@
                 <li><a href="/home/services">Services</a></li>
                 <li><a href="/home/projects">Projects</a></li>
                 <li><a href="/home/movies">Movies</a></li>
-                <li class="dropdown"><a href="#"><span>Categories</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                <li class="dropdown"><a href="#"><span>Categories</span> <i
+                            class="bi bi-chevron-down dropdown-indicator"></i></a>
                     <ul>
                         @foreach($categories as $category)
                             <li><a href='/home/movies/{{$category['slug']}}'>{{$category['category']}}</a></li>
@@ -68,7 +71,7 @@
                 <li><a href="/home/contact">Contact</a></li>
                 @if(Auth::user()->roleId==1)
                     @if(Route::getCurrentRoute()->getActionName() == 'App\Http\Controllers\MoviesController@show')
-                        <li><a href="{{route('movie.showCreate')}}">New Movie</a> </li>
+                        <li><a href="{{route('movie.showCreate')}}">New Movie</a></li>
                     @endif
                 @endif
                 @guest
@@ -85,7 +88,8 @@
                     @endif
                 @else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
                         </a>
 
@@ -100,6 +104,11 @@
                                 @csrf
                             </form>
                         </div>
+                    </li>
+                    <li>
+                        <a href="{{route('profile.show')}}"><img
+                                src="{{\Illuminate\Support\Facades\Storage::url('usersProfilePicture/'.Auth::user()->profile_picture)}}" height="50"
+                                width="50"> </a>
                     </li>
                 @endguest
             </ul>
@@ -127,10 +136,14 @@
                             <strong>Email:</strong> info@example.com<br>
                         </p>
                         <div class="social-links d-flex mt-3">
-                            <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-twitter"></i></a>
-                            <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-facebook"></i></a>
-                            <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-instagram"></i></a>
-                            <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" class="d-flex align-items-center justify-content-center"><i
+                                    class="bi bi-twitter"></i></a>
+                            <a href="#" class="d-flex align-items-center justify-content-center"><i
+                                    class="bi bi-facebook"></i></a>
+                            <a href="#" class="d-flex align-items-center justify-content-center"><i
+                                    class="bi bi-instagram"></i></a>
+                            <a href="#" class="d-flex align-items-center justify-content-center"><i
+                                    class="bi bi-linkedin"></i></a>
                         </div>
                     </div>
                 </div><!-- End footer info column-->
