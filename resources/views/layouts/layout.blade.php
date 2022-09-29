@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>UpConstruction Bootstrap Template - Blog Details</title>
+    <title>Movie - Blog</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -31,12 +31,6 @@
     <!-- Template Main CSS File -->
     <link href="{{asset('assets/css/main.css')}}" rel="stylesheet">
 
-    <!-- =======================================================
-    * Template Name: UpConstruction - v1.1.0
-    * Template URL: https://bootstrapmade.com/upconstruction-bootstrap-construction-website-template/
-    * Author: BootstrapMade.com
-    * License: https://bootstrapmade.com/license/
-    ======================================================== -->
 </head>
 
 <body>
@@ -45,10 +39,10 @@
 <header id="header" class="header d-flex align-items-center">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-        <a href="index.html" class="logo d-flex align-items-center">
+        <a href="/home" class="logo d-flex align-items-center">
             <!-- Uncomment the line below if you also wish to use an image logo -->
             <!-- <img src="assets/img/logo.png" alt=""> -->
-            <h1>UpConstruction<span>.</span></h1>
+            <h1>Movie Blog<span>.</span></h1>
         </a>
 
         <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
@@ -57,8 +51,6 @@
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/home/about">About</a></li>
-                <li><a href="/home/services">Services</a></li>
-                <li><a href="/home/projects">Projects</a></li>
                 <li><a href="/home/movies">Movies</a></li>
                 <li class="dropdown"><a href="#"><span>Categories</span> <i
                             class="bi bi-chevron-down dropdown-indicator"></i></a>
@@ -128,7 +120,7 @@
 
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-info">
-                        <h3>UpConstruction</h3>
+                        <h3>Movie Blog</h3>
                         <p>
                             A108 Adam Street <br>
                             NY 535022, USA<br><br>
@@ -153,9 +145,7 @@
                     <ul>
                         <li><a href="/home">Home</a></li>
                         <li><a href="/home/about">About us</a></li>
-                        <li><a href="/home/services">Services</a></li>
-                        <li><a href="/home/terms">Terms of service</a></li>
-                        <li><a href="/home/privacy">Privacy policy</a></li>
+                        <li><a href="/home/contact">Contact</a></li>
                     </ul>
                 </div><!-- End footer links column-->
 
@@ -199,13 +189,9 @@
     <div class="footer-legal text-center position-relative">
         <div class="container">
             <div class="copyright">
-                &copy; Copyright <strong><span>UpConstruction</span></strong>. All Rights Reserved
+                &copy; Copyright <strong><span>Movie Blog</span></strong>. All Rights Reserved
             </div>
             <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you purchased the pro version. -->
-                <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/upconstruction-bootstrap-construction-website-template/ -->
                 Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
             </div>
         </div>

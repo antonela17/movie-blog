@@ -51,7 +51,7 @@
 
         <!-- ======= Breadcrumbs ======= -->
         <div class="breadcrumbs d-flex align-items-center"
-             style="background-image: url({{asset('assets/img/breadcrumbs-bg.jpg')}});">
+             style="background: midnightblue">
             <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
                 <h2>Profile</h2>
                 <ol>

@@ -29,37 +29,13 @@ Route::group(['middleware' => 'user_only'], function () {
     Route::post('/home/contact', [\App\Http\Controllers\ContactController::class, 'send'])->name('contact.send');
 
     Route::get('/home/about', function () {
-        return view('about');
-    });
-
-    Route::get('/home/project-details', function () {
-        return view('project-details');
-    });
-
-    Route::get('/home/projects', function () {
-        return view('projects');
-    });
-
-    Route::get('/home/sample-inner-page', function () {
-        return view('sample-inner-page');
-    });
-
-    Route::get('/home/service-details', function () {
-        return view('service-details');
-    });
-
-    Route::get('/home/services', function () {
-        return view('services');
+        $categories = Categories::all()->toArray();
+        return view('about')->with(compact('categories'));
     });
 
     Route::get('/home/profile',[\App\Http\Controllers\ProfileController::class,'show'])->name('profile.show');
     Route::post('/home/profile/edit/{id}',[\App\Http\Controllers\ProfileController::class,'edit'])->name('profile.edit');
 
-
-//Route::get('/home/email', function () {
-//  Mail::to('info@gmail.com')->send(new ContactEmail());
-//    return new ContactEmail();
-//});
 
     Route::get('/home/movies', [\App\Http\Controllers\MoviesController::class, 'show']);
     Route::post('/home/movies', [\App\Http\Controllers\SearchController::class, 'search'])->name('search');
@@ -81,13 +57,5 @@ Route::group(['middleware' => 'user_only'], function () {
 
 });
 
-
-//Route::get('/home/edit', function () {
-//    $categories = Categories::all()->toArray();
-//
-//    return view('movie.edit')->with(compact("categories"));
-//})->name('edit');
-
-//Route::get('/home/sendMail', [\App\Http\Controllers\MailController::class,'sendMail']);
 
 

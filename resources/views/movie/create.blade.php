@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="breadcrumbs d-flex align-items-center"
-         style="background-image: url({{asset('assets/img/breadcrumbs-bg.jpg')}});">
+         style="background: midnightblue">
         <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
 
             <h2>Add a New Movie</h2>
@@ -30,19 +30,19 @@
                     <div class="row gy-3">
 
                         <div class="col-md-12">
-                            <label>Title: </label> <input type="text" name="title" class="form-control" placeholder="title" required>
+                            <label>Title: </label> <input type="text" name="title" class="form-control" placeholder="title" minlength="2"required>
                         </div>
 
                         <div class="col-md-12">
-                            <label>Image Url: </label> <input type="text" name="image" class="form-control" placeholder="Imager Url" required>
+                            <label>Image Url: </label> <input type="text" name="image" class="form-control" placeholder="Imager Url" minlength="10" required>
                         </div>
 
                         <div class="col-md-12">
-                            <label>Category: </label>  <input type="number" name="category" class="form-control" value="" required>
+                            <label>Category: </label>  <input type="number" name="category" class="form-control" value="" min="1" max="6" required>
                         </div>
 
                         <div class="col-md-12">
-                            <label>Content: </label> <textarea class="form-control" name="contentText" rows="6" value=""
+                            <label>Content: </label> <textarea class="form-control" name="contentText" rows="6"  minlength="100" maxlength="14900" value=""
                                       required></textarea>
                         </div>
 

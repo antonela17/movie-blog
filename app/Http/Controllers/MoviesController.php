@@ -45,7 +45,8 @@ class MoviesController
         $request->validate([
             'title' => 'string|unique:movies|max:1000',
             'image'=>'string|max:255',
-            'content' => 'string|max:14900',
+            'category'=>'numeric|min:2|max:5',
+            'contentText' => 'string|max:14900',
             'video' => 'string|max:14900',
         ]);
 
@@ -65,6 +66,7 @@ class MoviesController
 
             else
                 return redirect()->back()->with("error","Data is not correct!");
+
         } catch (\Exception $e) {
             return redirect()->back()
                 ->withInput($request->input())
@@ -94,13 +96,13 @@ class MoviesController
         $content = $request->contentText;
         $slug = Str::slug($request->title);
 
-//        $request->validate([
-//            'title' => 'required|string|unique:movies|max:1000',
-//            'image'=>'required|string|max:255',
-//            'content' => 'required|string|max:14900',
-//            'video' => 'required|string',
-//            'categoryId' => 'required'
-//        ]);
+        $request->validate([
+            'title' => 'required|string|unique:movies|max:255',
+            'image'=>'required|string|max:255',
+            'contentText' => 'required|string|max:14900',
+            'trailer' => 'required',
+            'category' => 'required'
+        ]);
 
         if ($request->hasFile('trailer')) {
             $request->validate([
@@ -132,7 +134,7 @@ class MoviesController
             return redirect()->back()
                 ->with('error', 'An error occurred while processing your data. Please try again later!');
         }
-        return back()->with('success', 'Course Successfully Added');
+        return back()->with('success', 'Movie Successfully Added');
     }
 
     public function showCreateMovie() {

@@ -22,10 +22,10 @@ class ProfileController extends Controller
         $user = User::query()->where('id', $id)->firstOrFail();
 
         $request->validate([
-            'name' => 'required|string|max:255',
-            'surname'=>'required|strings|max:255',
-            'username' => 'required|string|unique:users|max:255',
-            'email' => 'required|string|unique:users|max:255',
+            'name' => 'required|max:255',
+            'surname'=>'required|max:255',
+            'username' => 'required|max:255|unique:users,username',
+            'email' => 'required|max:255|unique:users,email',
         ]);
 
         if ($request->hasFile('profile_picture')) {

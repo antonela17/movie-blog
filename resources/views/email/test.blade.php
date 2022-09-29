@@ -1,6 +1,6 @@
 <!DOCTYPE>
 <html>
-<title>Document</title>
+<title>Email</title>
 <body>
 <p>
     Hi, <br>

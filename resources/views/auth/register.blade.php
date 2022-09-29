@@ -48,7 +48,10 @@
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Username') }}</label>
 
                             <div class="col-md-6">
-                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="name" autofocus>
+                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="name" autofocus placeholder="esmith"
+                                       pattern="^[A-Za-z0-9_-]*$+"
+                                       title="Name must start with only one uppercase and should have at least 4 characters"
+                                       minlength="4" maxlength="50">
 
                                 @error('username')
                                 <span class="invalid-feedback" role="alert">
